@@ -1,0 +1,83 @@
+policies:
+  - name: platform-defaults
+    environments: []
+    rules:
+      # All environments must have these labels
+      - type: required_labels
+        severity: deny
+        labels:
+          - app.kubernetes.io/name
+          - app.kubernetes.io/version
+          - team
+        description: "Every deployment must include standard Kubernetes and team labels"
+
+      # No images from personal or test registries
+      - type: forbidden_registry
+        severity: deny
+        registries:
+          - "docker.io/library/"
+          - "localhost:"
+          - "127.0.0.1:"
+        description: "Images must not originate from Docker Hub library or localhost registries"
+
+      # Image naming convention
+      - type: image_regex
+        severity: deny
+        regex_pattern: "^[a-z][a-z0-9._/-]+:[a-zA-Z0-9._-]+$"
+        description: "Image names must be lowercase with a valid tag (e.g. registry.example.com/my-app:v1.2.3)"
+
+  - name: resource-limits
+    environments: []
+    rules:
+      - type: max_cpu
+        severity: warn
+        value: 8
+        description: "CPU requests should not exceed 8 cores without review"
+
+      - type: max_memory
+        severity: warn
+        value: 16384
+        description: "Memory requests should not exceed 16384 MiB (16 GiB) without review"
+
+  - name: production-hardening
+    environments: ["production"]
+    rules:
+      - type: min_replicas
+        severity: deny
+        value: 2
+        description: "Production deployments must have at least 2 replicas for high availability"
+
+      - type: max_cpu
+        severity: deny
+        value: 4
+        description: "Production CPU requests must not exceed 4 cores"
+
+      - type: max_memory
+        severity: deny
+        value: 8192
+        description: "Production memory requests must not exceed 8192 MiB (8 GiB)"
+
+      - type: forbidden_capabilities
+        severity: deny
+        capabilities:
+          - NET_RAW
+          - SYS_ADMIN
+          - ALL
+        description: "Production containers must not request privileged Linux capabilities"
+
+  - name: security-baseline
+    environments: []
+    rules:
+      - type: forbidden_capabilities
+        severity: deny
+        capabilities:
+          - SYS_ADMIN
+          - ALL
+        description: "SYS_ADMIN and ALL capabilities are forbidden in all environments"
+    overrides:
+      - environment: staging
+        rules:
+          - type: max_cpu
+            severity: deny
+            value: 6
+            description: "Staging CPU requests must not exceed 6 cores"

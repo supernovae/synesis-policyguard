@@ -1,0 +1,7 @@
+policies:
+  - name: broken-policy
+    rules:
+      - type: required_labels
+        severity: invalid_severity
+        labels: ["app"]
+        description: "This policy has an invalid severity value"

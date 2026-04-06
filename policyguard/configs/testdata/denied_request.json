@@ -1,0 +1,12 @@
+{
+  "service_name": "debug-tool",
+  "environment": "production",
+  "image": "localhost:5000/debug:latest",
+  "cpu": 16,
+  "memory": 32768,
+  "replicas": 1,
+  "labels": {},
+  "annotations": {},
+  "owner": "unknown",
+  "capabilities": ["SYS_ADMIN", "NET_RAW"]
+}

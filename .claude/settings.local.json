@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(awk:*)",
+      "Bash(go build:*)",
+      "Bash(go:*)",
+      "Bash(python3:*)",
+      "Bash(xxd pkg/errors/errors.go)",
+      "Bash(xxd cmd/policyguard/main.go)",
+      "Bash(/tmp/policytest -test.run TestEvaluate_Allow -test.v)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(git init:*)",
+      "Bash(git remote:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}

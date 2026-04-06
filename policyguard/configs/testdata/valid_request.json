@@ -1,0 +1,18 @@
+{
+  "service_name": "web-frontend",
+  "environment": "production",
+  "image": "registry.example.com/web-frontend:v2.1.0",
+  "cpu": 2,
+  "memory": 4096,
+  "replicas": 3,
+  "labels": {
+    "app.kubernetes.io/name": "web-frontend",
+    "app.kubernetes.io/version": "v2.1.0",
+    "team": "platform"
+  },
+  "annotations": {
+    "description": "Valid production-ready deployment"
+  },
+  "owner": "platform-team",
+  "capabilities": ["NET_BIND_SERVICE"]
+}

@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(golangci-lint version:*)",
+      "Bash(make:*)",
+      "Bash(golangci-lint run:*)",
+      "Bash(echo \"EXIT: $?\")"
+    ]
+  }
+}
