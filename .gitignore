@@ -1,0 +1,30 @@
+# IDE and editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude Code session data
+.claude/
+
+# Go
+bin/
+vendor/
+*.exe
+*.test
+*.prof
+
+# Environment and secrets
+.env
+.env.*
+*.key
+*.pem
+
+# Build artifacts
+dist/
+build/
