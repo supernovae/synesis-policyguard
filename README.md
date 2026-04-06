@@ -4,4 +4,4 @@ This project was generated with **Synesis** using **Claude Code** connected to *
 
 ## Generation Context
 
-The original prompt that [PROMPT.md](PROMPT.md) that generated the Claude Code Plan [POLICYGUARD_PLAN.md](`POLICYGUARD_PLAN.md`) 
+The original prompt that [PROMPT.md](PROMPT.md) that generated the Claude Code Plan [POLICYGUARD_PLAN.md](POLICYGUARD_PLAN.md) 
